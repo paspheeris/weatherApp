@@ -45,7 +45,6 @@ function setCurrentWeather(data) {
 function weekDayDivsMarkup(data, scale) {
   return data.daily.data.map(day => {
     const date = new Date(day.sunriseTime * 1000);
-    console.dir(date.getDay());
     return `<div class="day-box day-box3">
               <span class="weekday">${dayStrRepArr[date.getDay()]}</span>
               <img src=./images/${day.icon}.svg> 
@@ -54,22 +53,3 @@ function weekDayDivsMarkup(data, scale) {
             </div>`
   }).join('');
 }
-{/* <div class="day-box day-box3">
-Mon
-<img src="./images/cloudy.svg"> 70F 50F
-</div> */}
-  // weekDaysNodeList.forEach((day, index) => {
-  //   let tempMax;
-  //   (scale === "celsius") ? tempMax = (data.daily.data[index].temperatureMax - 32) * (5 / 9) : tempMax = data.daily.data[index].temperatureMax;
-  //   let tempMin;
-  //   (scale === "celsius") ? tempMin = (data.daily.data[index].temperatureMin - 32) * (5 / 9) : tempMin = data.daily.data[index].temperatureMin;
-  //   //   day.innerHTML = `
-  //   //       Mon
-  //   //       <img src="./images/${data.daily.data[index].icon}.svg">
-  //   //       <span class="max">${Math.floor(tempMax)}
-  //   //       </span>
-  //   //       ${Math.floor(tempMin)}
-  //   //   `
-  //   // })
-  //   // weekDayWrapper.appendChild('di')
-  // })

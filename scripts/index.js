@@ -12,14 +12,15 @@ navigator.geolocation.getCurrentPosition(position => {
       return response.json();
     })
     .then(parsedData => {
-      console.log(parsedData);
       cachedData = parsedData;
       createCurrentTempDiv(parsedData, scale, currentTempDiv);
       setCurrentWeather(parsedData);
       createWeekWeatherDivs(parsedData, scale);
       registerToggleListener(cachedData, scale);
       return parsedData;
-
+    })
+    .catch(error => {
+      console.log(error);
     });
 }, err => { alert("Please allow geolocation") });
 function getFormattedTemp(temperatureInF, scale) {
@@ -30,13 +31,10 @@ function getFormattedTemp(temperatureInF, scale) {
 function createCurrentTempDiv(data, scale, domNode) {
   currentTime = new Date();
   const temperature = getFormattedTemp(data.currently.temperature, scale);
-  console.log(domNode);
   domNode.innerHTML = currentTempDivMarkup(temperature, scale);
 }
 
 function createWeekWeatherDivs(data, scale) {
-  console.log(data);
   weekDayWrapper.innerHTML = weekDayDivsMarkup(data, scale);
 
 }
-// function createDayWeatherDiv(tempMax, tempMin)
